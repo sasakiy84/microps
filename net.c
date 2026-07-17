@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 
+#include "arp.h"
 #include "platform.h"
 
 #include "net.h"
@@ -192,6 +193,10 @@ net_init(void)
         errorf("platform_init() failure");
         return -1;
     }
+    if (arp_init() == -1) {
+        errorf("arp_init() failure");
+        return -1;
+    } 
     if (ip_init() == -1) {
       errorf("ip_init() failure");
       return -1;

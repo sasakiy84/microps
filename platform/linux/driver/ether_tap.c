@@ -164,7 +164,7 @@ ether_tap_input(struct net_device *dev, uint8_t *frame, size_t flen)
     type = ntoh16(hdr->type);
     debugf("dev=%s, type=0x%04x, len=%zd", dev->name, type, flen);
     ether_print(frame, flen);
-    return net_input(type, (uint8_t *)(hdr+1), flen = sizeof(*hdr), dev);
+    return net_input(type, (uint8_t *)(hdr+1), flen - sizeof(*hdr), dev);
 }
 
 static void
